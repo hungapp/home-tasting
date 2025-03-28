@@ -2,6 +2,16 @@
 
 A Next.js application for managing home tasting event registrations.
 
+![Home Tasting App](/public/images/hanoi-phoria-logo-full.png)
+
+## Features
+
+- Time slot selection for tasting events
+- Guest registration with contact information
+- Waiver agreement and payment confirmation
+- Admin panel for managing reservations
+- MongoDB integration for data persistence
+
 ## Getting Started
 
 ### Prerequisites
@@ -13,7 +23,7 @@ A Next.js application for managing home tasting event registrations.
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/yourusername/home-tasting.git
 cd home-tasting
 ```
 
@@ -62,13 +72,6 @@ In the Vercel project settings, add the following environment variable:
 
 Click "Deploy" and wait for the build to complete.
 
-## Features
-
-- Time slot selection for tasting events
-- Guest registration with contact information
-- Waiver agreement and payment confirmation
-- Admin panel for managing reservations
-
 ## Technology Stack
 
 - Next.js 15
@@ -76,3 +79,7 @@ Click "Deploy" and wait for the build to complete.
 - MongoDB (via Mongoose)
 - Tailwind CSS
 - Vercel (hosting)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
