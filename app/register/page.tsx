@@ -364,7 +364,7 @@ export default function RegisterPage() {
                     this menu tasting event hosted by Hanoi Phoria is not a commercial food sale but a private gathering
                     to sample Pho Hanoi for feedback purposes. I acknowledge that Hanoi Phoria is not a licensed food
                     vendor and that food is prepared in a home kitchen. In consideration of participating, I voluntarily
-                    assume all risks related to food consumption (e.g., allergies, illness). I agree to contribute $10
+                    assume all risks related to food consumption (e.g., allergies, illness). I agree to contribute per person
                     to help cover ingredient costs, understanding this is not a purchase of food.
                   </p>
                 </div>
