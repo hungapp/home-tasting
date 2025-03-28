@@ -104,30 +104,78 @@ export default function RegisterPage() {
         throw new Error(errorData.error || `API error: ${response.status}`)
       }
 
+      const responseData = await response.json()
+
+      // Send confirmation email
+      try {
+        await fetch("/api/email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: formData.email,
+            subject: "Hanoi Phoria Tasting Reservation Confirmation",
+            html: `
+              <!DOCTYPE html>
+              <html>
+              <head>
+                <style>
+                  body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                  .header { background-color: #5D0C1D; color: white; padding: 20px; text-align: center; }
+                  .content { padding: 20px; }
+                  .reservation-details { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin: 20px 0; }
+                  .footer { font-size: 12px; color: #666; text-align: center; margin-top: 30px; }
+                </style>
+              </head>
+              <body>
+                <div class="header">
+                  <h1>Hanoi Phoria</h1>
+                  <p>Home Tasting Experience</p>
+                </div>
+                
+                <div class="content">
+                  <h2>Reservation Confirmation</h2>
+                  <p>Dear ${formData.name},</p>
+                  <p>Thank you for reserving a spot at our home tasting experience. We're excited to have you join us!</p>
+                  
+                  <div class="reservation-details">
+                    <h3>Your Reservation Details:</h3>
+                    <p><strong>Date:</strong> Saturday, April 12, 2025</p>
+                    <p><strong>Time:</strong> ${selectedSlot.time}</p>
+                    <p><strong>Number of Guests:</strong> ${guests} ${Number.parseInt(guests) === 1 ? 'person' : 'people'}</p>
+                    <p><strong>Location:</strong> 123 Main Street, Boston, MA 02115</p>
+                  </div>
+                  
+                  <p>If you need to cancel or modify your reservation, please contact us at least 24 hours in advance.</p>
+                  
+                  <p>We look forward to hosting you!</p>
+                  
+                  <p>Best regards,<br>The Hanoi Phoria Team</p>
+                </div>
+                
+                <div class="footer">
+                  <p>© 2025 Hanoi Phoria. All rights reserved.</p>
+                </div>
+              </body>
+              </html>
+            `,
+          }),
+        });
+      } catch (emailError) {
+        console.error("Failed to send confirmation email:", emailError);
+        // Continue with the flow even if email fails
+      }
+
       // Show success message
       toast({
         title: "Reservation confirmed!",
         description: `Your tasting is scheduled for Saturday, April 12, 2025 at ${selectedSlot.time} for ${guests} guest(s)`,
       })
 
-      // Refresh time slots
-      const updatedResponse = await fetch("/api/reservations")
-      if (updatedResponse.ok) {
-        const updatedData = await updatedResponse.json()
-        setTimeSlots(updatedData)
-      }
+      // Redirect to confirmation page
+      window.location.href = `/register/confirmation?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&time=${encodeURIComponent(selectedSlot.time)}&guests=${encodeURIComponent(guests)}`;
 
-      // Reset form
-      setSelectedTimeSlot("")
-      setGuests("1")
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        notes: "",
-        waiverAgreed: false,
-        paymentConfirmed: false,
-      })
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.")
       console.error(err)
@@ -345,11 +393,11 @@ export default function RegisterPage() {
                       <div className="mt-2 space-y-1">
                         <div className="flex items-center">
                           <span className="text-xs font-medium w-16">Venmo:</span>
-                          <span className="text-xs">@trangmap</span>
+                          <span className="text-xs">@duongtrang510</span>
                         </div>
                         <div className="flex items-center">
                           <span className="text-xs font-medium w-16">Zelle:</span>
-                          <span className="text-xs">@trangmap</span>
+                          <span className="text-xs">8574379884</span>
                         </div>
                       </div>
                     </div>
