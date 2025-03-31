@@ -54,9 +54,18 @@ function ConfirmationContent() {
           </div>
         </div>
       </div>
+
+      <div className="bg-gray-800 rounded-md p-6 max-w-md mx-auto mb-8">
+        <h2 className="text-xl font-semibold mb-4 text-left">Parking Instructions</h2>
+        <div className="text-left text-gray-300 space-y-3">
+          <p>Address: 839 East St, Dedham, MA 02026</p>
+          <p>Primary Parking: Please use the driveway if spots are available.</p>
+          <p>Alternative Parking: If the driveway is full, additional parking is available at the commuter rail parking lots on Grant Ave (across the street).</p>
+        </div>
+      </div>
       
       <p className="text-sm text-gray-400 mb-6">
-        A confirmation email has been sent to {email} with these details.
+        A confirmation email will be sent to {email} with these details.
       </p>
       
       <Link 
@@ -107,9 +116,6 @@ export default function ConfirmationPage() {
           </Link>
           <Link href="/register" className="text-sm font-medium hover:underline underline-offset-4">
             Register
-          </Link>
-          <Link href="/admin" className="text-sm font-medium hover:underline underline-offset-4">
-            Admin
           </Link>
         </nav>
       </header>
