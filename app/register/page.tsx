@@ -363,6 +363,9 @@ export default function RegisterPage() {
                     vendor and that food is prepared in a home kitchen. In consideration of participating, I voluntarily
                     assume all risks related to food consumption (e.g., allergies, illness). I agree to contribute $10 per person
                     to help cover ingredient costs, understanding this is not a purchase of food.
+
+                    Additionally, I agree to provide honest and candid feedback about the food tasting experience by completing 
+                    a feedback form at the end of the meal.
                   </p>
                 </div>
 
@@ -376,7 +379,7 @@ export default function RegisterPage() {
                     htmlFor="waiver"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    I agree to the terms of the waiver and will contribute $10 to cover ingredient costs
+                    I agree to the terms of the waiver.
                   </label>
                 </div>
                 
